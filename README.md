@@ -21,8 +21,8 @@ Welcome to the **CSE421 Lab Assignments Repository**. This repository contains c
 This repository is organized into lab assignments as follows:
 
 ### Lab Assignments
-- **Assignment 1**: Basic Router Configuration (Cisco)
-- **Assignment 2**: *(Coming Soon)*
+- **Assignment 1**: Basic Router Configuration (Cisco) ✅
+- **Assignment 2**: Application Layer Protocols & NS-3 Simulation ✅
 - **Assignment 3**: *(Coming Soon)*
 - **Assignment 4**: *(Coming Soon)*
 
@@ -50,6 +50,37 @@ Configure and manage basic Cisco router settings including hostname, security cr
 - Lab assignment PDF document
 - Complete lab report
 
+---
+
+## ✅ Assignment 2: Application Layer Protocols and NS-3 Network Simulation
+
+### Objective
+Understand application layer protocols (HTTP, SMTP) and implement network simulations using NS-3 to measure network performance.
+
+### Topics Covered
+- HTTP protocol structure and methods
+- SMTP protocol flow and commands
+- Packet analysis and inspection
+- Network topology design
+- UDP Echo application implementation
+- Flow monitoring and statistics
+- Performance metrics (throughput, latency, packet loss)
+
+### Technologies Used
+- **NS-3 (Network Simulator 3)** - Network simulation framework
+- **Python** - NS-3 scripting
+- **Wireshark** - Packet capture and analysis
+- **UDP** - Transport layer protocol
+
+### Files Included
+- Comprehensive protocol documentation (HTTP, SMTP)
+- NS-3 simulation script (Python)
+- Network topology configuration
+- Performance measurement guide
+- Complete lab report with analysis
+- Packet analysis documentation
+- Implementation guide
+
 ## 🚀 Quick Start
 
 Each assignment is contained in its own directory with the following structure:
@@ -72,9 +103,9 @@ Assignment[X]/
 ## 📝 Project Structure
 
 ```
-CSE421/
-├── README.md                      # This file
-├── LICENSE                        # MIT License
+CSE421/3, 2026  
+**Current Status**: Assignments 1 & 2 Completed ✓  
+**Overall Progress**: 2/4 Assignments (50License
 ├── .gitignore                     # Git ignore rules
 ├── Assignment1/
 │   ├── Configuration Files/
