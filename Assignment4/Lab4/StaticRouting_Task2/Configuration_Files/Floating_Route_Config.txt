@@ -1,0 +1,298 @@
+================================================================================
+Static Routing Task 2: Configuring Floating Static Routes
+Backup Route Configuration with Administrative Distance
+================================================================================
+
+Task Overview:
+Configure floating static routes to implement route failover using
+administrative distance. Primary and backup routes with different costs
+enable automatic failover when the primary path becomes unavailable.
+
+================================================================================
+EDGE ROUTER CONFIGURATION - FLOATING ROUTES
+================================================================================
+
+Enable Privileged Mode:
+Edge_Router>enable
+
+Enter Configuration Mode:
+Edge_Router#configure terminal
+
+Configure Primary Default Route (Administrative Distance: 1):
+Edge_Router(config)#ip route 0.0.0.0 0.0.0.0 s0/0/0
+
+Configure Backup Default Route (Administrative Distance: 5):
+Edge_Router(config)#ip route 0.0.0.0 0.0.0.0 s0/0/1 5
+
+Additional: Configure IPv6 Default Route (Backup with AD=5):
+Edge_Router(config)#ipv6 route ::/0 2001:DB8:A:2::1 5
+
+Exit Configuration Mode:
+Edge_Router(config)#exit
+
+View Routing Table:
+Edge_Router#show ip route
+
+================================================================================
+INTERFACE MANAGEMENT FOR FAILOVER TESTING
+================================================================================
+
+Shutdown Primary Interface (s0/0/0):
+Edge_Router(config)#interface s0/0/0
+Edge_Router(config-if)#shutdown
+
+%LINK-5-CHANGED: Interface Serial0/0/0, changed state to administratively down
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/0, changed state to down
+
+Exit Interface Configuration:
+Edge_Router(config-if)#exit
+
+View Routing Table After Shutdown:
+Edge_Router#show ip route
+[Router will now use backup route via s0/0/1]
+
+Restore Primary Interface (s0/0/0):
+Edge_Router(config)#interface s0/0/0
+Edge_Router(config-if)#no shutdown
+
+%LINK-5-CHANGED: Interface Serial0/0/0, changed state to up
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/0, changed state to up
+
+Exit Configuration:
+Edge_Router(config-if)#exit
+
+Verify Primary Route Restored:
+Edge_Router#show ip route
+[Router returns to using primary route via s0/0/0]
+
+================================================================================
+ADMINISTRATIVE DISTANCE (AD) CONCEPT
+================================================================================
+
+What is Administrative Distance?
+Administrative Distance is a number (0-255) that indicates router TRUST in a
+route source. Lower AD = Higher trust = Route preferred over higher AD routes.
+
+AD Values:
+- 0 = Connected interface (most trusted)
+- 1 = Static route (default)
+- 120 = RIP (lowest trust for dynamic protocols)
+- 100 = IGRP
+- 90 = EIGRP
+- 110 = OSPF
+- 255 = Unusable (never used)
+
+Static Route AD Examples:
+- ip route 10.0.0.0 255.255.255.0 10.1.1.1 (AD = 1, primary)
+- ip route 10.0.0.0 255.255.255.0 10.2.2.1 5 (AD = 5, backup)
+
+When primary route (AD 1) becomes unavailable, backup route (AD 5) activates.
+When primary route is restored, it becomes active again (higher preference).
+
+================================================================================
+FLOATING STATIC ROUTE CONFIGURATION
+================================================================================
+
+Two Default Routes - Floating Route Scenario:
+
+Primary Route:
+ip route 0.0.0.0 0.0.0.0 s0/0/0
+[Default AD = 1]
+
+Backup Route (Floating):
+ip route 0.0.0.0 0.0.0.0 s0/0/1 5
+[AD = 5, inactive while primary is up]
+
+Behavior:
+1. Both routes defined in configuration
+2. Router prefers AD 1 route (primary)
+3. Backup route "floats" in configuration
+4. When primary interface/route fails:
+   - Primary route removed from active table
+   - Floating backup (AD 5) activates
+5. When primary recovers:
+   - Primary route restored
+   - Floating backup becomes standby again
+
+Advantages:
+- Automatic failover without manual intervention
+- No duplicate IP next-hops needed
+- Works with same destination networks
+- Simple to configure and understand
+- Reduced WAN costs (use backup only when needed)
+
+================================================================================
+FAILOVER SCENARIO
+================================================================================
+
+Normal Operation (Primary Route Active):
+Router# show ip route
+S   0.0.0.0/0 [1/0] via <primary-interface>
+    (Backup route NOT shown - AD 5 not active)
+
+Primary Link Fails:
+- Interface s0/0/0 goes down
+- Primary route (AD 1) disappears from table
+- Backup route (AD 5) immediately activates
+- Traffic rerouted through s0/0/1
+
+During Failover:
+Router# show ip route
+S   0.0.0.0/0 [5/0] via <backup-interface>
+    (Now using AD 5 backup route)
+
+Primary Link Restored:
+- Interface s0/0/0 comes back up
+- Primary route (AD 1) reinstalled
+- Traffic switched back to primary
+- Backup route becomes standby again
+
+Return to Normal:
+Router# show ip route
+S   0.0.0.0/0 [1/0] via <primary-interface>
+    (Backup route hidden again due to higher AD)
+
+================================================================================
+IPv6 FLOATING ROUTES (BONUS CONFIGURATION)
+================================================================================
+
+IPv6 syntax follows same pattern:
+
+Primary IPv6 Default Route:
+ipv6 route ::/0 2001:DB8:A:1::1
+
+Backup IPv6 Default Route (Floating):
+ipv6 route ::/0 2001:DB8:A:2::1 5
+
+Verify IPv6 Routes:
+show ipv6 route
+
+================================================================================
+VERIFICATION COMMANDS
+================================================================================
+
+Display All Static Routes:
+show ip route static
+
+Display All Routes with Details:
+show ip route
+
+Display Specific Route:
+show ip route 0.0.0.0
+
+Display Interface Status:
+show interface s0/0/0
+show interface s0/0/1
+
+View Configuration:
+show running-config
+show running-config | include route
+
+Check Interface Statistics:
+show interface serial 0/0/0 brief
+
+Ping Through Route:
+ping <destination-ip>
+ping 10.0.0.1 (test if route works)
+
+Traceroute to Verify Path:
+traceroute <destination-ip>
+
+Debug Routing:
+debug ip routing
+show debug
+
+================================================================================
+COMPARISON: FLOATING ROUTES VS OTHER FAILOVER METHODS
+================================================================================
+
+Method               | Implementation | Failover Time | Complexity
+---------------------|----------------|---------------|----------
+Floating Routes      | AD adjustment  | Automatic     | Simple
+Dynamic Routing      | Protocols      | Automatic     | Complex
+Manual Failover      | Admin action   | Manual        | Very simple
+Hot Standby (HSRP)   | Virtual IP     | Very fast     | Medium
+Load Balancing       | Multiple paths | N/A           | Complex
+
+================================================================================
+REAL-WORLD FLOATING ROUTE SCENARIOS
+================================================================================
+
+Scenario 1: ISP Link Redundancy
+- Primary route to ISP A via s0/0/0 (AD 1)
+- Backup route to ISP B via s0/0/1 (AD 5)
+- If ISP A fails, automatically switches to ISP B
+- Cost: Use expensive backup only when needed
+- No manual intervention required
+
+Scenario 2: Data Center Failover
+- Primary route to main datacenter (AD 1)
+- Backup route to DR datacenter (AD 5)
+- Transparent failover on primary failure
+- Service continuity with minimal disruption
+
+Scenario 3: WAN Optimization
+- Primary fast/expensive link (AD 1)
+- Backup slow/cheap link (AD 5)
+- Automatic use of backup if primary fails
+- Reduces WAN costs by using expensive link only when needed
+
+================================================================================
+TROUBLESHOOTING FLOATING ROUTES
+================================================================================
+
+Issue: Backup route not activating
+- Verify configuration with: show running-config
+- Check backup route has higher AD
+- Confirm primary interface has failed
+- Monitor with: debug ip routing
+
+Issue: Failover takes too long
+- Floating routes are automatic when route disappears
+- Delay usually due to interface convergence time
+- May need manual interface shutdown for testing
+- BFD (Bidirectional Forwarding Detection) can speed up detection
+
+Issue: Route flapping
+- Interface going up/down repeatedly
+- Disable interface and enable to test
+- Check physical layer issues
+- Monitor interface status: show interface
+
+Issue: Both routes active unexpectedly
+- Routes have same AD - both will load-balance
+- Ensure backup has HIGHER AD number
+- Verify syntax: ip route ... 5 (not just ip route ...)
+
+================================================================================
+BEST PRACTICES FOR FLOATING ROUTES
+================================================================================
+
+1. Administrative Distance Selection
+   - Primary route: AD 1 (default for static)
+   - Backup route: AD 5-10 (or higher)
+   - Never use AD 0 (reserved for connected)
+
+2. Network Design
+   - Diverse paths to same destination
+   - Different ISPs/links for redundancy
+   - Test failover regularly
+
+3. Monitoring
+   - Monitor primary link continuously
+   - Alert on failover events
+   - Regular failover testing
+
+4. Documentation
+   - Document all floating routes
+   - Maintain network topology diagram
+   - Record AD values used
+
+5. Testing
+   - Perform regular failover drills
+   - Shut down primary to test backup
+   - Verify failback to primary
+
+================================================================================
+End of Configuration
+================================================================================
