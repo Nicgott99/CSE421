@@ -1,0 +1,171 @@
+================================================================================
+Static Routing Task 1: Configuring IPv4 Static and Default Routes
+Multi-Router Static Route Configuration
+================================================================================
+
+Task Overview:
+Configure static routes on multiple routers (R1, R2, R3) to enable
+manual route specification and connectivity across network segments.
+
+================================================================================
+NETWORK TOPOLOGY
+================================================================================
+
+Network Addresses:
+- R1 LAN: 172.31.0.0/24
+- R2-R3 WAN Segment 1: 172.31.1.0/25
+- R2-R3 WAN Segment 2: 172.31.1.128/26
+- R3 Serial Link: 172.31.1.196/30
+- Router R1 Gateway: 172.31.1.193 (next-hop for R1)
+- Router R2 Gateway: 172.31.1.190 (next-hop for R2)
+
+================================================================================
+ROUTER R1 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R1>enable
+
+Enter Configuration Mode:
+R1#configure terminal
+
+Add Static Route to 172.31.0.0/24:
+R1(config)#ip route 172.31.0.0 255.255.255.0 172.31.1.193
+
+Add Static Route to 172.31.1.128/26:
+R1(config)#ip route 172.31.1.128 255.255.255.192 172.31.1.193
+
+Add Static Route to 172.31.1.196/30:
+R1(config)#ip route 172.31.1.196 255.255.255.252 172.31.1.193
+
+Exit Configuration Mode:
+R1(config)#exit
+
+Verify Routing Table:
+R1#show ip route
+
+================================================================================
+ROUTER R2 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R2>enable
+
+Enter Configuration Mode:
+R2#configure terminal
+
+Add Static Route to 172.31.1.0/25 via se0/0/0:
+R2(config)#ip route 172.31.1.0 255.255.255.128 se0/0/0
+
+Add Static Route to 172.31.1.128/26 via se0/0/1:
+R2(config)#ip route 172.31.1.128 255.255.255.192 se0/0/1
+
+Exit Configuration Mode:
+R2(config)#exit
+
+Verify Routing Table:
+R2#show ip route
+
+================================================================================
+ROUTER R3 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R3>enable
+
+Enter Configuration Mode:
+R3#configure terminal
+
+Add Default Route via se0/0/1:
+R3(config)#ip route 0.0.0.0 0.0.0.0 se0/0/1
+
+Exit Configuration Mode:
+R3(config)#exit
+
+Verify Routing Table:
+R3#show ip route
+
+================================================================================
+CLIENT VERIFICATION COMMANDS
+================================================================================
+
+PC1 Connectivity Tests:
+C:\>ping 172.31.0.254
+C:\>ping 172.31.1.190
+
+PC2 Connectivity Tests:
+C:\>ping 172.31.1.126
+C:\>ping 172.31.1.190
+
+PC3 Connectivity Tests:
+C:\>ping 172.31.0.254
+C:\>ping 172.31.1.126
+
+================================================================================
+ROUTING CONCEPTS DEMONSTRATED
+================================================================================
+
+Static Routes vs Dynamic Routes:
+- Manual configuration of routing paths
+- No automatic route discovery
+- Administrator control over path selection
+- Predictable behavior with fixed routes
+
+Default Route Usage:
+- Catch-all route for unknown destinations
+- Reduces routing table size
+- Common in edge routers
+- Destination 0.0.0.0/0 means "all networks"
+
+Administrative Distance:
+- Default static route AD: 1 (very trusted)
+- Lower AD preferred over higher AD
+- Default route AD = 1 unless changed
+- No competing routes in this configuration
+
+Route Verification:
+- show ip route displays active routes
+- Confirms route installation
+- Shows next-hop and interface information
+- Useful for troubleshooting
+
+================================================================================
+KEY DIFFERENCES FROM DYNAMIC ROUTING (TASK 3 - RIPv2)
+================================================================================
+
+Feature              | Static Route  | Dynamic Route (RIPv2)
+---------------------|---------------|---------------------
+Configuration        | Manual entry  | Automatic learned
+Scalability          | Limited       | Better for large networks
+Failover Handling    | Manual        | Automatic
+Route Changes        | Manual update | Automatic update
+CPU/Memory Usage     | Minimal       | Moderate
+Convergence Time     | Immediate     | Slow (RIP updates every 30s)
+Knowledge Required   | Network design| Protocol understanding
+Use Case             | Small networks| Medium-sized networks
+
+================================================================================
+TROUBLESHOOTING GUIDE
+================================================================================
+
+Issue: Routes not appearing in routing table
+- Verify route syntax: ip route <destination> <mask> <next-hop>
+- Check next-hop router is reachable
+- Verify interface is up/up status
+- Confirm subnet mask is correct
+
+Issue: Ping fails between networks
+- Verify all required routes are configured
+- Check return path route exists
+- Verify interfaces have IP addresses
+- Test with debug ip routing
+
+Issue: Wrong route selected
+- Verify route AD and metrics
+- Check more specific routes (longest match)
+- Confirm no overlapping routes
+- Use traceroute to verify actual path
+
+================================================================================
+End of Configuration
+================================================================================
