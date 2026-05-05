@@ -199,9 +199,10 @@ Assignment[X]/
 ### Current Metrics
 | Metric | Count |
 |--------|-------|
-| **Assignments Completed** | 3/4 (75% + Phase 2 pending) |
-| **Total Commits** | 23 (and counting) |
-| **Documentation Lines** | 3200+ |
+| **Assignments Completed** | 4/4 (100%) ✅ |
+| **Total Commits** | 38+ |
+| **Documentation Lines** | 5,400+ |
+| **Configuration Lines** | 1,200+ |
 | **Source Files** | 40+ |
 | **Lab Reports** | 4 |
 | **Technologies** | 20+ |
@@ -210,14 +211,16 @@ Assignment[X]/
 - **Assignment 1**: 6 professional incremental commits
 - **Assignment 2**: 6 professional incremental commits
 - **Assignment 3**: 6 professional incremental commits
-- **Assignment 4 Phase 1**: 11 professional incremental commits
-- **Total**: 29 commits (not bulk uploads)
+- **Assignment 4 Phase 1**: 13 professional incremental commits
+- **Assignment 4 Phase 2**: 7 professional incremental commits
+- **Total**: 38 commits (zero bulk uploads)
 
 ### Documentation Breakdown
 - **Assignment 1**: 700+ lines of documentation
-- **Assignment 2**: 1000+ lines of documentation
-- **Assignment 3**: 1200+ lines of documentation + code
-- **Total**: 2600+ lines of comprehensive technical content
+- **Assignment 2**: 1,000+ lines of documentation
+- **Assignment 3**: 1,200+ lines of documentation + code
+- **Assignment 4**: 2,500+ lines of configurations and documentation
+- **Total**: 5,600+ lines of comprehensive technical content
 
 ---
 
@@ -277,103 +280,136 @@ CSE421/
 │   └── Lab Report/
 │       └── LAB_REPORT.md (800+ lines)
 │
-├── Assignment4/                   # ✅ Complete - Phase 1 (11 commits, 10 files)
+├── Assignment4/                   # ✅ COMPLETE (20 commits, 17 files)
 │   ├── Lab4/
 │   │   ├── DHCP_Task1/
 │   │   │   ├── Configuration_Files/
-│   │   │   │   └── R2_DHCP_Config.txt
+│   │   │   │   └── R2_DHCP_Config.txt (88 lines)
 │   │   │   ├── Documentation/
 │   │   │   │   └── README.md (54 lines)
 │   │   │   └── 8.1.3.3_Packet_Tracer_-_Configuring_DHCPv4_Using_Cisco_IOS.pka
 │   │   ├── DHCP_Task2/
 │   │   │   ├── Configuration_Files/
-│   │   │   │   └── DHCP_Server_Config.txt
+│   │   │   │   └── DHCP_Server_Config.txt (73 lines)
 │   │   │   ├── Documentation/
 │   │   │   │   └── README.md (84 lines)
 │   │   │   └── 8.1.3.3_Packet_Tracer_-_Configuring_DHCPv4_Using_DHCP_Server.pka
 │   │   ├── Routing3/
 │   │   │   ├── Configuration_Files/
-│   │   │   │   └── RIPv2_Config.txt
+│   │   │   │   └── RIPv2_Config.txt (172 lines)
 │   │   │   ├── Documentation/
 │   │   │   │   └── README.md (158 lines)
 │   │   │   └── 7.3.1.8_Packet_Tracer_-_Configuring_RIPv2.pka
-│   │   └── README.md (259 lines - Lab Overview)
-│   └── README.md (222 lines - Assignment Overview)
-└── StaticRouting_Tasks/           # ⏳ Phase 2 (Coming May 6, 2026)
+│   │   ├── StaticRouting_Task1/
+│   │   │   ├── Configuration_Files/
+│   │   │   │   └── Static_Route_Config.txt (171 lines)
+│   │   │   ├── Documentation/
+│   │   │   │   └── README.md (265 lines)
+│   │   │   └── 2.2.2.4_Packet_Tracer_-_Configuring_IPv4_Static_and_Default_Routes.pka
+│   │   ├── StaticRouting_Task2/
+│   │   │   ├── Configuration_Files/
+│   │   │   │   └── Floating_Route_Config.txt (298 lines)
+│   │   │   ├── Documentation/
+│   │   │   │   └── README.md (404 lines)
+│   │   │   └── 2.2.5.5_Packet_Tracer_-_Configuring_Floating_Static_Routes.pka
+│   │   └── README.md (339 lines - Lab Overview with all 5 tasks)
+│   └── README.md (287 lines - Assignment Overview)
+```
 ```
 
-## ✅ Assignment 4: Lab 4 - DHCP & Dynamic Routing (Phase 1 Complete)
+## ✅ Assignment 4: Lab 4 - DHCP, Dynamic Routing & Static Routing (COMPLETE)
 
 ### Objective
-Master network administration through DHCP implementation and dynamic routing configuration, understanding both centralized and distributed network management approaches.
+Master comprehensive network administration through DHCP implementation, dynamic and static routing configuration, understanding centralized/distributed management, automatic/manual path selection, and redundancy with failover mechanisms.
 
-### Phase 1 Tasks Completed (May 5, 2026)
+### Phase 1 Tasks Completed (May 5, 2026) ✅
 
 **Task 1: DHCP Configuration Using Cisco IOS** ✅
 - Configure DHCP server on router R2
-- Manage dual DHCP pools (R1-LAN, R3-LAN)
-- Implement IP address exclusion
+- Manage dual DHCP pools (R1-LAN: 192.168.10.0/24, R3-LAN: 192.168.30.0/24)
+- Implement IP address exclusion (192.168.10.1-10)
 - Configure DHCP relay agents on R1 and R3
-- **Documentation**: 54 lines + Configuration
-- **Files**: R2_DHCP_Config.txt, Packet Tracer file
+- **Configuration**: 88 lines, **Documentation**: 54 lines
+- **Files**: R2_DHCP_Config.txt, Packet Tracer simulation
 
 **Task 2: DHCP Configuration Using Dedicated Server** ✅
-- Design centralized DHCP infrastructure
+- Design centralized DHCP infrastructure with 192.168.60.253 server
 - Configure DHCP relay agents on routers
-- Set up IP helper addresses (192.168.60.253)
-- Compare router-based vs. server-based approaches
-- **Documentation**: 84 lines + Comparison tables
-- **Files**: DHCP_Server_Config.txt, Packet Tracer file
+- Set up IP helper addresses for relay functionality
+- Compare router-based vs. server-based deployment
+- **Configuration**: 73 lines, **Documentation**: 84 lines
+- **Files**: DHCP_Server_Config.txt, Architecture diagrams, Packet Tracer file
 
 **Task 3: Dynamic Routing with RIPv2** ✅
 - Configure RIPv2 on three-router topology
-- Implement automatic route discovery
+- Implement automatic route discovery and advertisement
 - Set up passive interfaces on LAN connections
-- Enable default route propagation
-- **Documentation**: 158 lines + Protocol analysis
-- **Files**: RIPv2_Config.txt, Packet Tracer file
+- Enable default route propagation with redistribute default
+- **Configuration**: 172 lines, **Documentation**: 158 lines
+- **Files**: RIPv2_Config.txt, Protocol analysis, Packet Tracer file
 
-### Topics Covered (Phase 1)
-- DHCP protocol operation and implementation
-- Router-based DHCP server configuration
-- Dedicated DHCP server architecture
-- DHCP relay agents and IP helper addresses
-- Dynamic routing protocols
-- RIPv2 configuration and operation
-- Network scalability and administration
-- Cisco IOS advanced commands
+### Phase 2 Tasks Completed (May 6, 2026) ✅
+
+**Task 4: Static and Default Route Configuration** ✅
+- Manual route configuration on R1, R2, R3
+- Configure routes to multiple subnets (172.31.0.0/24, 172.31.1.128/26, 172.31.1.196/30)
+- Implement default routes on border routers
+- Configure gateway IP addresses for route selection
+- **Configuration**: 171 lines, **Documentation**: 265 lines
+- **Files**: Static_Route_Config.txt, Troubleshooting guide, Packet Tracer file
+
+**Task 5: Floating Static Routes with Failover** ✅
+- Implement primary and backup routes using administrative distance (AD)
+- Configure primary route (AD 1) via s0/0/0
+- Configure backup floating route (AD 5) via s0/0/1
+- Test automatic failover mechanisms
+- Support for IPv4 and IPv6 floating routes
+- **Configuration**: 298 lines, **Documentation**: 404 lines
+- **Files**: Floating_Route_Config.txt, Failover scenarios, Real-world use cases, Packet Tracer file
+
+### Topics Covered (All 5 Tasks)
+- **DHCP**: Protocol operation, server types, relay agents, IP helper addresses
+- **Dynamic Routing**: RIPv2 protocol, automatic discovery, route advertisement
+- **Static Routing**: Manual configuration, default routes, gateway concepts
+- **Failover**: Administrative distance, floating routes, automatic rerouting
+- **Network Administration**: Centralized vs distributed, scalability, reliability
+- **Cisco IOS**: Advanced CLI commands, configuration modes, verification
 
 ### Technologies Used
 - **Cisco Packet Tracer 8.x** - Network simulation
 - **Cisco IOS 15.x** - Router operating system
-- **DHCP** - IP address allocation
+- **DHCP v4** - IP address allocation
 - **RIPv2** - Dynamic routing protocol
-- **IPv4** - Network protocol
+- **Static Routes & Floating Routes** - Manual path selection and failover
+- **IPv4/IPv6** - Network protocols
 
-### Phase 2 Tasks Scheduled (May 6, 2026)
-- **Task 4**: Static Routing - IPv4 Static and Default Routes
-- **Task 5**: Static Routing - Floating Static Routes
-
-### File Statistics (Phase 1)
+### File Statistics (All Phases Complete)
 | Metric | Count |
 |--------|-------|
-| **Configuration Files** | 3 |
-| **Documentation Files** | 4 |
-| **Packet Tracer Files** | 3 |
-| **Total Files** | 10 |
-| **Total Commits** | 11 |
-| **Lines of Documentation** | 500+ |
-| **Configuration Lines** | 400+ |
+| **Configuration Files** | 5 |
+| **Documentation Files** | 5 |
+| **Packet Tracer Files** | 5 |
+| **README Overview Files** | 2 |
+| **Total Files** | 17 |
+| **Total Commits** | 20 |
+| **Configuration Lines** | 802 |
+| **Documentation Lines** | 965 |
+| **Total Lines** | 1,767 |
 
-### Learning Outcomes (Phase 1)
-- ✅ Understand DHCP server implementation
-- ✅ Design network administration architecture
-- ✅ Configure dynamic routing protocols
-- ✅ Implement network scalability
-- ✅ Master Cisco IOS configuration
-- ✅ Document enterprise network solutions
+### Learning Outcomes (All 5 Tasks)
+- ✅ Understand DHCP server implementation (router-based and centralized)
+- ✅ Design network administration architecture (distributed and centralized)
+- ✅ Configure dynamic routing protocols (RIPv2)
+- ✅ Configure static routing with manual path selection
+- ✅ Implement failover mechanisms using floating routes
+- ✅ Understand administrative distance and route preference
+- ✅ Master Cisco IOS configuration for all scenarios
+- ✅ Document enterprise network solutions professionally
+- ✅ Implement network scalability and reliability
+- ✅ Compare static vs dynamic routing approaches
 
-### Contribution Breakdown (Phase 1)
+### Contribution Breakdown (All Phases - 20 Total Commits)
+**Phase 1 Commits (May 5, 2026)**:
 1. **DHCP Task 1 Config** - Commit bf006e4
 2. **DHCP Task 1 Documentation** - Commit 083955c
 3. **DHCP Task 1 Packet Tracer** - Commit 76600c1
@@ -383,9 +419,19 @@ Master network administration through DHCP implementation and dynamic routing co
 7. **Routing Task 3 Config** - Commit 6c349c7
 8. **Routing Task 3 Documentation** - Commit 969a8f7
 9. **Routing Task 3 Packet Tracer** - Commit 3397600
-10. **Lab4 Overview** - Commit df33ecd
-11. **Assignment4 Overview** - Commit a89c772
-```
+10. **Lab 4 Overview** - Commit df33ecd
+11. **Assignment 4 Overview** - Commit a89c772
+12. **Repository Documentation** - Commit fa2c031
+13. **Main README Update** - Commit df4cc01
+
+**Phase 2 Commits (May 6, 2026)**:
+14. **Static Routing Task 1 Config** - Commit 9727f98
+15. **Static Routing Task 1 Documentation** - Commit 6028b3c
+16. **Static Routing Task 1 Packet Tracer** - Commit 0052349
+17. **Static Routing Task 2 Config** - Commit c225080
+18. **Static Routing Task 2 Documentation** - Commit 227725b
+19. **Static Routing Task 2 Packet Tracer** - Commit 253da11
+20. **Lab 4 Complete Update** - Commit 999ca80
 
 ## 📄 License
 
