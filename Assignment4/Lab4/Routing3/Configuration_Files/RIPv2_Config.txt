@@ -1,0 +1,172 @@
+================================================================================
+Routing Task 3: Configuring RIPv2 (Routing Information Protocol Version 2)
+Dynamic Routing Configuration
+================================================================================
+
+Task Overview:
+Configure RIPv2 dynamic routing protocol on three routers (R1, R2, R3)
+to enable automatic route discovery and path selection across the network.
+
+================================================================================
+ROUTER R1 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R1>enable
+
+Enter Configuration Mode:
+R1#configure terminal
+
+Configure Default Route:
+R1(config)#ip route 0.0.0.0 0.0.0.0 s0/0/1
+
+Enable RIP Router:
+R1(config)#router rip
+
+Set RIPv2:
+R1(config-router)#version 2
+
+Add Networks to RIP:
+R1(config-router)#network 192.168.1.0
+R1(config-router)#network 192.168.2.0
+
+Disable Auto-Summary:
+R1(config-router)#no auto-summary
+
+Originate Default Information:
+R1(config-router)#default-information originate
+
+Set Passive Interface:
+R1(config-router)#passive-interface g0/0
+R1(config-router)#exit
+
+Exit Configuration:
+R1(config)#exit
+R1#
+
+Save Configuration:
+R1#copy run start
+
+================================================================================
+ROUTER R2 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R2>enable
+
+Enter Configuration Mode:
+R2#configure terminal
+
+Enable RIP Router:
+R2(config)#router rip
+
+Set RIPv2:
+R2(config-router)#version 2
+
+Add Networks to RIP:
+R2(config-router)#network 192.168.3.0
+R2(config-router)#network 192.168.2.0
+R2(config-router)#network 192.168.4.0
+
+Disable Auto-Summary:
+R2(config-router)#no auto-summary
+
+Originate Default Information:
+R2(config-router)#default-information originate
+
+Set Passive Interface:
+R2(config-router)#passive-interface g0/0
+R2(config-router)#exit
+
+Exit Configuration:
+R2(config)#exit
+R2#
+
+Save Configuration:
+R2#copy run start
+
+================================================================================
+ROUTER R3 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R3>enable
+
+Enter Configuration Mode:
+R3#configure terminal
+
+Enable RIP Router:
+R3(config)#router rip
+
+Set RIPv2:
+R3(config-router)#version 2
+
+Add Networks to RIP:
+R3(config-router)#network 192.168.5.0
+R3(config-router)#network 192.168.1.0
+
+Remove Duplicate Network Entry (if needed):
+R3(config-router)#no network 192.168.1.0
+
+Add Fourth Network:
+R3(config-router)#network 192.168.4.0
+
+Disable Auto-Summary:
+R3(config-router)#no auto-summary
+
+Originate Default Information:
+R3(config-router)#default-information originate
+
+Set Passive Interface:
+R3(config-router)#passive-interface g0/0
+R3(config-router)#exit
+
+Exit Configuration:
+R3(config)#exit
+R3#
+
+Save Configuration:
+R3#copy run start
+
+================================================================================
+RIPv2 CONFIGURATION SUMMARY
+================================================================================
+
+RIPv2 Features Implemented:
+1. Version 2: Better security and VLSM support than RIPv1
+2. Classless Routing: Supports variable-length subnet masks
+3. Auto-Summary Disabled: Allows more precise route advertisement
+4. Default Route Propagation: Originate default-information for ISP routes
+5. Passive Interfaces: Prevent unnecessary routing updates on LANs
+
+Network Participation:
+- R1: Participates in networks 192.168.1.0, 192.168.2.0
+- R2: Participates in networks 192.168.2.0, 192.168.3.0, 192.168.4.0
+- R3: Participates in networks 192.168.1.0, 192.168.4.0, 192.168.5.0
+
+Router Connectivity:
+- R1 ↔ R2: Connected via 192.168.2.0/24
+- R2 ↔ R3: Connected via 192.168.4.0/24
+- R1 ↔ R3: Connected via 192.168.1.0/24 (multi-hop route)
+
+================================================================================
+VERIFICATION COMMANDS
+================================================================================
+
+View RIP Configuration:
+show ip route
+show ip rip database
+show ip protocols
+
+Check RIP Neighbors:
+debug ip rip
+
+Monitor Routing Table:
+show ip route rip
+
+Display RIP Statistics:
+show ip rip statistics
+
+================================================================================
+END OF CONFIGURATION
+================================================================================
