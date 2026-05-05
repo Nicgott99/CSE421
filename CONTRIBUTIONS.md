@@ -16,10 +16,10 @@
 |---|-----------|--------|---------|-------|----------------|
 | 1 | Basic Router Configuration | ✅ Complete | 6 | 12 | 700+ lines |
 | 2 | Application Layer & NS-3 | ✅ Complete | 6 | 8 | 1000+ lines |
-| 3 | *(Available)* | ✅ Available | - | - | - |
-| 4 | Lab 4 - DHCP & Dynamic Routing | ✅ Complete (Phase 1) | 11 | 10 | 1500+ lines |
+| 3 | TCP Socket Programming | ✅ Complete | 6 | 16 | 1200+ lines |
+| 4 | Lab 4 - DHCP & Routing | ✅ Complete | 20 | 17 | 2500+ lines |
 
-**Overall Progress**: 75% (3/4 complete + Phase 2 pending)
+**Overall Progress**: 100% (4/4 complete, 38+ total commits)
 
 ---
 
@@ -296,40 +296,70 @@
 - **Expected Files**: 8-10
 - **Documentation**: 600+ lines
 
-### Assignment 4: Lab 4 - DHCP & Dynamic Routing
-**Total Lines**: 1500+ (Phase 1)
+### Assignment 4: Lab 4 - DHCP, Routing & Static Routes
+**Total Lines**: 2,500+ (All 5 Tasks Complete)
+
+#### Phase 1 (May 5, 2026) - DHCP & Dynamic Routing
 - DHCP Task 1 Config & Docs: 140 lines
   - Router DHCP server configuration
   - DHCP pools and address exclusion
   - Helper address configuration
+  - Commit hashes: bf006e4, 083955c, 76600c1
   
 - DHCP Task 2 Config & Docs: 155 lines
   - Dedicated DHCP server setup
   - Relay agent implementation
   - Architecture documentation
+  - Commit hashes: f92dbf3, 69fd7a9, cbd9f62
   
 - Routing Task 3 Config & Docs: 330 lines
   - RIPv2 dynamic routing configuration
   - Three-router topology setup
   - Route discovery and convergence
+  - Commit hashes: 6c349c7, 969a8f7, 3397600
   
 - Lab Overview & Documentation: 500+ lines
   - Comprehensive Lab 4 documentation
   - Task objectives and outcomes
   - Learning path and assessment criteria
+  - Commit hashes: df33ecd, a89c772
+
+#### Phase 2 (May 6, 2026) - Static Routing & Failover
+- Static Routing Task 1 Config & Docs: 435 lines
+  - Manual static route configuration (R1, R2, R3)
+  - Multiple subnet routes (172.31.x.x ranges)
+  - Default route implementation
+  - Troubleshooting guide
+  - Commit hashes: 9727f98, 6028b3c, 0052349
+  
+- Static Routing Task 2 Config & Docs: 700 lines
+  - Floating route configuration with AD
+  - Primary (AD 1) and backup (AD 5) routes
+  - Failover mechanism testing
+  - IPv4 and IPv6 floating routes
+  - Real-world scenarios and use cases
+  - Commit hashes: c225080, 227725b, 253da11
+  
+- Lab 4 Complete Update: 80 lines
+  - Updated file structure for all 5 tasks
+  - Updated learning paths and skills
+  - Completion status and effort tracking
+  - Commit hash: 999ca80
 
 **Key Topics**:
-- ✅ DHCP protocol and implementation
-- ✅ Router-based vs. server-based DHCP
-- ✅ Dynamic routing protocols
-- ✅ RIPv2 configuration
-- ✅ Network scalability
+- ✅ DHCP protocol and implementation (router-based and centralized)
+- ✅ Router-based vs. server-based DHCP architecture
+- ✅ Dynamic routing protocols (RIPv2)
+- ✅ Static routing configuration and management
+- ✅ Administrative distance and route preference
+- ✅ Floating routes and automatic failover
+- ✅ Network scalability and reliability
 - ✅ Cisco IOS advanced commands
+- ✅ Network redundancy strategies
 
-**Phase 1 Status**: ✅ COMPLETE (May 5, 2026)
-**Phase 2 Status**: ⏳ PENDING (May 6, 2026)
-- Static Routing Task 1: IPv4 Static & Default Routes
-- Static Routing Task 2: Floating Static Routes
+**Phase 1 Status**: ✅ COMPLETE (May 5, 2026, 13 commits)
+**Phase 2 Status**: ✅ COMPLETE (May 6, 2026, 7 commits)
+**Overall Lab 4 Status**: ✅ FULLY COMPLETE (20 total commits)
 
 ---
 
