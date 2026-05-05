@@ -24,7 +24,7 @@ This repository is organized into lab assignments as follows:
 - **Assignment 1**: Basic Router Configuration (Cisco) ✅
 - **Assignment 2**: Application Layer Protocols & NS-3 Simulation ✅
 - **Assignment 3**: TCP Socket Programming in Python ✅
-- **Assignment 4**: *(Coming Soon)*
+- **Assignment 4**: Lab 4 - DHCP & Dynamic Routing ✅ (Phase 1)
 
 ## ✅ Assignment 1: Basic Router Configuration
 
@@ -199,18 +199,19 @@ Assignment[X]/
 ### Current Metrics
 | Metric | Count |
 |--------|-------|
-| **Assignments Completed** | 3/4 (75%) |
-| **Total Commits** | 18 (6 per assignment) |
-| **Documentation Lines** | 2600+ |
-| **Source Files** | 36+ |
-| **Lab Reports** | 3 |
-| **Technologies** | 15+ |
+| **Assignments Completed** | 3/4 (75% + Phase 2 pending) |
+| **Total Commits** | 23 (and counting) |
+| **Documentation Lines** | 3200+ |
+| **Source Files** | 40+ |
+| **Lab Reports** | 4 |
+| **Technologies** | 20+ |
 
 ### Commit Breakdown
 - **Assignment 1**: 6 professional incremental commits
 - **Assignment 2**: 6 professional incremental commits
 - **Assignment 3**: 6 professional incremental commits
-- **Total**: 18 commits (not bulk uploads)
+- **Assignment 4 Phase 1**: 11 professional incremental commits
+- **Total**: 29 commits (not bulk uploads)
 
 ### Documentation Breakdown
 - **Assignment 1**: 700+ lines of documentation
@@ -276,7 +277,114 @@ CSE421/
 │   └── Lab Report/
 │       └── LAB_REPORT.md (800+ lines)
 │
-└── Assignment4/                   # ⏳ Coming Soon
+├── Assignment4/                   # ✅ Complete - Phase 1 (11 commits, 10 files)
+│   ├── Lab4/
+│   │   ├── DHCP_Task1/
+│   │   │   ├── Configuration_Files/
+│   │   │   │   └── R2_DHCP_Config.txt
+│   │   │   ├── Documentation/
+│   │   │   │   └── README.md (54 lines)
+│   │   │   └── 8.1.3.3_Packet_Tracer_-_Configuring_DHCPv4_Using_Cisco_IOS.pka
+│   │   ├── DHCP_Task2/
+│   │   │   ├── Configuration_Files/
+│   │   │   │   └── DHCP_Server_Config.txt
+│   │   │   ├── Documentation/
+│   │   │   │   └── README.md (84 lines)
+│   │   │   └── 8.1.3.3_Packet_Tracer_-_Configuring_DHCPv4_Using_DHCP_Server.pka
+│   │   ├── Routing3/
+│   │   │   ├── Configuration_Files/
+│   │   │   │   └── RIPv2_Config.txt
+│   │   │   ├── Documentation/
+│   │   │   │   └── README.md (158 lines)
+│   │   │   └── 7.3.1.8_Packet_Tracer_-_Configuring_RIPv2.pka
+│   │   └── README.md (259 lines - Lab Overview)
+│   └── README.md (222 lines - Assignment Overview)
+└── StaticRouting_Tasks/           # ⏳ Phase 2 (Coming May 6, 2026)
+```
+
+## ✅ Assignment 4: Lab 4 - DHCP & Dynamic Routing (Phase 1 Complete)
+
+### Objective
+Master network administration through DHCP implementation and dynamic routing configuration, understanding both centralized and distributed network management approaches.
+
+### Phase 1 Tasks Completed (May 5, 2026)
+
+**Task 1: DHCP Configuration Using Cisco IOS** ✅
+- Configure DHCP server on router R2
+- Manage dual DHCP pools (R1-LAN, R3-LAN)
+- Implement IP address exclusion
+- Configure DHCP relay agents on R1 and R3
+- **Documentation**: 54 lines + Configuration
+- **Files**: R2_DHCP_Config.txt, Packet Tracer file
+
+**Task 2: DHCP Configuration Using Dedicated Server** ✅
+- Design centralized DHCP infrastructure
+- Configure DHCP relay agents on routers
+- Set up IP helper addresses (192.168.60.253)
+- Compare router-based vs. server-based approaches
+- **Documentation**: 84 lines + Comparison tables
+- **Files**: DHCP_Server_Config.txt, Packet Tracer file
+
+**Task 3: Dynamic Routing with RIPv2** ✅
+- Configure RIPv2 on three-router topology
+- Implement automatic route discovery
+- Set up passive interfaces on LAN connections
+- Enable default route propagation
+- **Documentation**: 158 lines + Protocol analysis
+- **Files**: RIPv2_Config.txt, Packet Tracer file
+
+### Topics Covered (Phase 1)
+- DHCP protocol operation and implementation
+- Router-based DHCP server configuration
+- Dedicated DHCP server architecture
+- DHCP relay agents and IP helper addresses
+- Dynamic routing protocols
+- RIPv2 configuration and operation
+- Network scalability and administration
+- Cisco IOS advanced commands
+
+### Technologies Used
+- **Cisco Packet Tracer 8.x** - Network simulation
+- **Cisco IOS 15.x** - Router operating system
+- **DHCP** - IP address allocation
+- **RIPv2** - Dynamic routing protocol
+- **IPv4** - Network protocol
+
+### Phase 2 Tasks Scheduled (May 6, 2026)
+- **Task 4**: Static Routing - IPv4 Static and Default Routes
+- **Task 5**: Static Routing - Floating Static Routes
+
+### File Statistics (Phase 1)
+| Metric | Count |
+|--------|-------|
+| **Configuration Files** | 3 |
+| **Documentation Files** | 4 |
+| **Packet Tracer Files** | 3 |
+| **Total Files** | 10 |
+| **Total Commits** | 11 |
+| **Lines of Documentation** | 500+ |
+| **Configuration Lines** | 400+ |
+
+### Learning Outcomes (Phase 1)
+- ✅ Understand DHCP server implementation
+- ✅ Design network administration architecture
+- ✅ Configure dynamic routing protocols
+- ✅ Implement network scalability
+- ✅ Master Cisco IOS configuration
+- ✅ Document enterprise network solutions
+
+### Contribution Breakdown (Phase 1)
+1. **DHCP Task 1 Config** - Commit bf006e4
+2. **DHCP Task 1 Documentation** - Commit 083955c
+3. **DHCP Task 1 Packet Tracer** - Commit 76600c1
+4. **DHCP Task 2 Config** - Commit f92dbf3
+5. **DHCP Task 2 Documentation** - Commit 69fd7a9
+6. **DHCP Task 2 Packet Tracer** - Commit cbd9f62
+7. **Routing Task 3 Config** - Commit 6c349c7
+8. **Routing Task 3 Documentation** - Commit 969a8f7
+9. **Routing Task 3 Packet Tracer** - Commit 3397600
+10. **Lab4 Overview** - Commit df33ecd
+11. **Assignment4 Overview** - Commit a89c772
 ```
 
 ## 📄 License
