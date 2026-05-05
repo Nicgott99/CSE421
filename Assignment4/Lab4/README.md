@@ -78,26 +78,57 @@ By completing this lab, students will be able to:
 ---
 
 ### Task 4: Static Routing - IPv4 Static and Default Routes
-**Status**: Scheduled for next submission
-- Configuring static routes
-- Floating static routes
-- Route prioritization
-- Backup route configuration
+**Duration**: 2-2.5 hours
+**Difficulty**: Intermediate
+**Technologies**: Static Routes, Cisco IOS, IPv4 Routing
+
+**Key Concepts**:
+- Manual static route configuration
+- Default route implementation
+- Multiple router static route coordination
+- Route verification procedures
+
+**Outcomes**:
+- Three routers (R1, R2, R3) configured with manual routes
+- Static routes to networks 172.31.0.0/24, 172.31.1.128/26, 172.31.1.196/30
+- Default route on edge router pointing to gateway
+- Cross-network connectivity via manual routing
+
+[View Task 4 Details](./StaticRouting_Task1/Documentation/README.md)
 
 ---
 
 ### Task 5: Static Routing - Floating Static Routes
-**Status**: Scheduled for next submission
-- Advanced static routing scenarios
-- Route preference and cost calculation
-- Failover mechanisms
+**Duration**: 2-2.5 hours
+**Difficulty**: Intermediate-Advanced
+**Technologies**: Floating Routes, Administrative Distance, Failover
+
+**Key Concepts**:
+- Administrative distance concept
+- Floating route configuration
+- Primary and backup route selection
+- Automatic failover mechanisms
+- Route failback procedures
+
+**Outcomes**:
+- Edge router with two default routes (primary AD 1, backup AD 5)
+- Automatic route activation based on link status
+- Transparent failover without manual intervention
+- IPv6 floating routes implementation
+
+[View Task 5 Details](./StaticRouting_Task2/Documentation/README.md)
 
 ## Skills Demonstrated
 
 | Skill | Tasks |
 |-------|-------|
 | **DHCP Configuration** | Task 1, Task 2 |
-| **Cisco IOS Commands** | All Tasks |
+| **Cisco IOS Commands** | All Tasks (1-5) |
+| **Static Routing** | Task 4, Task 5 |
+| **Dynamic Routing** | Task 3 |
+| **Route Administration** | All Tasks |
+| **Network Verification** | All Tasks |
+| **Failover Configuration** | Task 5 |
 | **Router Configuration** | All Tasks |
 | **Network Design** | All Tasks |
 | **IP Addressing** | All Tasks |
@@ -140,29 +171,42 @@ Lab4/
 │   ├── Documentation/
 │   │   └── README.md
 │   └── 7.3.1.8_Packet_Tracer_-_Configuring_RIPv2.pka
-├── StaticRouting_Task1/ [TBD]
-├── StaticRouting_Task2/ [TBD]
+├── StaticRouting_Task1/
+│   ├── Configuration_Files/
+│   │   └── Static_Route_Config.txt
+│   ├── Documentation/
+│   │   └── README.md
+│   └── 2.2.2.4_Packet_Tracer_-_Configuring_IPv4_Static_and_Default_Routes.pka
+├── StaticRouting_Task2/
+│   ├── Configuration_Files/
+│   │   └── Floating_Route_Config.txt
+│   ├── Documentation/
+│   │   └── README.md
+│   └── 2.2.5.5_Packet_Tracer_-_Configuring_Floating_Static_Routes.pka
 └── README.md
 ```
 
 ## How to Use These Resources
 
 ### For Learning
-1. Read the task documentation in order (Task 1 → Task 3)
+1. Read the task documentation in order (Task 1 → Task 5)
 2. Review configuration files to understand CLI commands
 3. Study the network topology and addressing scheme
 4. Open Packet Tracer files for hands-on practice
+5. Follow progression: DHCP (centralized services) → Routing (network paths)
 
 ### For Reference
 - Use configuration files as command reference
 - Consult documentation for protocol concepts
 - Review verification commands for troubleshooting
+- Compare different approaches (DHCP server types, static vs dynamic routing)
 
 ### For Assessment
 - Complete each task following the documentation
 - Verify your configuration matches the provided commands
 - Test connectivity using provided ping commands
-- Document your results
+- Document your results for each task
+- Compare outcomes across all five tasks
 
 ## Key Technologies
 
@@ -185,20 +229,26 @@ Lab4/
 
 ## Learning Path Recommendation
 
-**Week 1-2: DHCP Tasks**
+**Week 1-2: DHCP Configuration (Tasks 1-2)**
 - Understand DHCP client-server model
 - Compare router-based vs. server-based approaches
+- Learn DHCP relay agents and IP helper addresses
 - Practice configuration and verification
 
-**Week 3: Routing Tasks**
+**Week 3: Dynamic Routing (Task 3)**
 - Learn dynamic routing principles
 - Master RIPv2 configuration
-- Explore route selection mechanisms
+- Explore automatic route discovery
+- Test route convergence
 
-**Week 4: Advanced Tasks**
-- Static routing strategies
-- Route prioritization
-- Failover mechanisms
+**Week 4: Static Routing (Tasks 4-5)**
+- Understand manual route configuration
+- Learn static route syntax and concepts
+- Master administrative distance concept
+- Implement failover with floating routes
+- Compare static vs dynamic routing approaches
+
+**Total Estimated Time**: 10-15 hours comprehensive coverage
 
 ## Assessment Criteria
 
@@ -252,8 +302,13 @@ Students are evaluated on:
 - **Email**: hasibullah.khan.alvie@g.bracu.ac.bd
 - **Completion Date**: May 2026
 
-**Total Effort**: 9 Individual Contributions (DHCP Task 1, DHCP Task 2, Routing Task 3)
+**Total Effort**: 19 Individual Contributions
+- DHCP Task 1: 3 commits
+- DHCP Task 2: 3 commits
+- Routing Task 3: 3 commits
+- Static Routing Task 1: 3 commits
+- Static Routing Task 2: 3 commits
+- Lab 4 Overview: 1 commit
+- Updated Documentation: 3 commits
 
----
-
-For questions or clarifications, refer to individual task documentation files or contact your lab coordinator.
+**Lab 4 Status**: ✅ FULLY COMPLETE (All 5 Tasks)
