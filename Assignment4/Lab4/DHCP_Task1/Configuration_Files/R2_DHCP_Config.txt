@@ -1,0 +1,88 @@
+================================================================================
+DHCP Task 1: Configuring DHCPv4 Using Cisco IOS
+Router R2 - DHCP Server Configuration
+================================================================================
+
+Task Overview:
+Configure DHCP service on Router R2 to provide IP addresses to clients
+on R1-LAN and R3-LAN networks.
+
+================================================================================
+ROUTER R2 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R2>enable
+
+Enter Configuration Mode:
+R2#configure terminal
+
+Exclude IP Addresses from DHCP Pool (for router and gateway IPs):
+R2(config)#ip dhcp excluded-address 192.168.10.1 192.168.10.10
+
+Create DHCP Pool for R1-LAN:
+R2(config)#ip dhcp pool R1-LAN
+R2(dhcp-config)#network 192.168.10.0 255.255.255.0
+R2(dhcp-config)#default-router 192.168.10.1
+R2(dhcp-config)#dns-server 192.168.20.254
+R2(dhcp-config)#exit
+
+Create DHCP Pool for R3-LAN:
+R2(config)#ip dhcp pool R3-LAN
+R2(dhcp-config)#network 192.168.30.0 255.255.255.0
+R2(dhcp-config)#default-router 192.168.30.1
+R2(dhcp-config)#dns-server 192.168.20.254
+R2(dhcp-config)#exit
+
+Configure Interface G0/1 for DHCP:
+R2(config)#interface g0/1
+R2(config-if)#ip address dhcp
+R2(config-if)#no shutdown
+
+Verify DHCP Bindings:
+R2#show ip dhcp binding
+
+================================================================================
+ROUTER R1 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R1>enable
+
+Enter Configuration Mode:
+R1#configure terminal
+
+Configure Interface G0/0:
+R1(config)#interface g0/0
+R1(config-if)#ip helper-address 10.1.1.2
+
+================================================================================
+ROUTER R3 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R3>enable
+
+Enter Configuration Mode:
+R3#configure terminal
+
+Configure Interface G0/0:
+R3(config)#interface g0/0
+R3(config-if)#ip helper-address 10.2.2.2
+R3(config-if)#exit
+
+================================================================================
+CLIENT VERIFICATION COMMANDS
+================================================================================
+
+PC1 Verification:
+C:\>ping 192.168.30.11
+C:\>ping 192.168.20.254
+
+PC2 Verification:
+C:\>ping 192.168.10.11
+C:\>ping 192.168.20.254
+
+================================================================================
+End of Configuration
+================================================================================
