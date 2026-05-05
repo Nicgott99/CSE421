@@ -1,0 +1,73 @@
+================================================================================
+DHCP Task 2: Configuring DHCPv4 Using DHCP Server
+Dedicated DHCP Server Configuration
+================================================================================
+
+Task Overview:
+Configure DHCP service on a dedicated DHCP server appliance to provide
+IP addresses to clients on different network subnets with DHCP relay agents.
+
+================================================================================
+ROUTER R1 CONFIGURATION COMMANDS
+================================================================================
+
+Enable Privileged Mode:
+R1>enable
+
+Enter Configuration Mode:
+R1#configure terminal
+
+Configure Interface G0/0 with DHCP Helper:
+R1(config)#int g0/0
+R1(config-if)#ip helper-address 192.168.60.253
+R1(config-if)#exit
+
+================================================================================
+DESCRIPTION
+================================================================================
+
+Network Configuration:
+- Central DHCP Server: 192.168.60.253
+- Router R1 provides DHCP relay services
+- IP Helper Address redirects DHCP requests to central server
+- Multiple subnets supported through relay agents
+
+DHCP Server Address: 192.168.60.253
+This dedicated appliance handles all DHCP allocation requests from
+multiple routers across the network.
+
+Advantages of Dedicated DHCP Server:
+1. Centralized IP address management
+2. Consistent lease policies across network
+3. Better scalability for large networks
+4. Simplified administration and monitoring
+5. Reduced router resource consumption
+
+================================================================================
+RELAY AGENT MECHANISM
+================================================================================
+
+When a client requests DHCP:
+1. Client sends DHCP DISCOVER broadcast
+2. Router R1 receives broadcast on its interface
+3. IP helper-address redirects to 192.168.60.253
+4. DHCP Server responds with available IP
+5. Router R1 forwards response to client
+6. Client receives assigned IP address
+
+================================================================================
+VERIFICATION COMMANDS
+================================================================================
+
+On Router R1:
+show ip route               - Verify routing configuration
+show ip interface g0/0      - Check interface status
+debug ip udp               - Debug DHCP traffic (if needed)
+
+On DHCP Server:
+show dhcp binding           - View active leases
+show dhcp statistics        - Display DHCP statistics
+
+================================================================================
+End of Configuration
+================================================================================
