@@ -16,10 +16,10 @@
 |---|-----------|--------|---------|-------|----------------|
 | 1 | Basic Router Configuration | ✅ Complete | 6 | 12 | 700+ lines |
 | 2 | Application Layer & NS-3 | ✅ Complete | 6 | 8 | 1000+ lines |
-| 3 | *(Pending)* | ⏳ Ready | - | - | - |
-| 4 | *(Pending)* | ⏳ Ready | - | - | - |
+| 3 | *(Available)* | ✅ Available | - | - | - |
+| 4 | Lab 4 - DHCP & Dynamic Routing | ✅ Complete (Phase 1) | 11 | 10 | 1500+ lines |
 
-**Overall Progress**: 50% (2/4 assignments)
+**Overall Progress**: 75% (3/4 complete + Phase 2 pending)
 
 ---
 
@@ -296,17 +296,40 @@
 - **Expected Files**: 8-10
 - **Documentation**: 600+ lines
 
-### Assignment 4
-- **Status**: Ready to add
-- **Estimated Commits**: 6
-- **Expected Files**: 8-10
-- **Documentation**: 600+ lines
+### Assignment 4: Lab 4 - DHCP & Dynamic Routing
+**Total Lines**: 1500+ (Phase 1)
+- DHCP Task 1 Config & Docs: 140 lines
+  - Router DHCP server configuration
+  - DHCP pools and address exclusion
+  - Helper address configuration
+  
+- DHCP Task 2 Config & Docs: 155 lines
+  - Dedicated DHCP server setup
+  - Relay agent implementation
+  - Architecture documentation
+  
+- Routing Task 3 Config & Docs: 330 lines
+  - RIPv2 dynamic routing configuration
+  - Three-router topology setup
+  - Route discovery and convergence
+  
+- Lab Overview & Documentation: 500+ lines
+  - Comprehensive Lab 4 documentation
+  - Task objectives and outcomes
+  - Learning path and assessment criteria
 
-**Projected Final Stats**:
-- Total Commits: 24 (6+6+6+6)
-- Total Files: 36-40
-- Total Documentation: 2500+ lines
-- Completion: 100%
+**Key Topics**:
+- ✅ DHCP protocol and implementation
+- ✅ Router-based vs. server-based DHCP
+- ✅ Dynamic routing protocols
+- ✅ RIPv2 configuration
+- ✅ Network scalability
+- ✅ Cisco IOS advanced commands
+
+**Phase 1 Status**: ✅ COMPLETE (May 5, 2026)
+**Phase 2 Status**: ⏳ PENDING (May 6, 2026)
+- Static Routing Task 1: IPv4 Static & Default Routes
+- Static Routing Task 2: Floating Static Routes
 
 ---
 
@@ -339,14 +362,16 @@
 
 | Metric | Value |
 |--------|-------|
-| **Assignments Completed** | 2/4 (50%) |
-| **Total Commits** | 12 |
-| **Total Files** | 20+ |
-| **Documentation Lines** | 1700+ |
-| **Code Lines** | 241+ |
-| **Lab Report Lines** | 900+ |
-| **Technologies Used** | 15+ |
+| **Assignments Completed** | 3/4 (75% + Phase 2 pending) |
+| **Total Commits** | 23 (and counting) |
+| **Total Files** | 30+ |
+| **Documentation Lines** | 3200+ |
+| **Code/Config Lines** | 400+ |
+| **Lab Report Lines** | 1400+ |
+| **Technologies Used** | 20+ |
 | **Repository Status** | Active & Updated |
+| **Phase 1 Contributions** | 11 commits |
+| **Phase 2 Planned** | 6 commits |
 
 ---
 
